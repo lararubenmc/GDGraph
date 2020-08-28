@@ -27,7 +27,6 @@
          $this->data = $data;
          $this->n_elements = count($data);
          $this->title = $title;
-         $this->set_title();
          $this->set_proportions();
          
       }
@@ -53,10 +52,11 @@
       
       public function pie_graph()
       {
+         $this->set_title();
          $follow_fill = 0;
          $follow_fill_line = $this->size_px;
          foreach ($this->elements_percent as $element => $elements) {
-            $color_pie = imagecolorallocate($this->image, random_int(50, 150), random_int(50, 150), random_int(50, 150));
+            $color_pie = imagecolorallocate($this->image, rand(50, 150), rand(50, 150), rand(50, 150));
             $star = $follow_fill;
             $end = round($follow_fill + (360.00 * $elements));
             imagefilledarc($this->image, $this->size_px * .5, $this->size_px * .5, $this->size_px * .9, $this->size_px * .9, $star, $end, $color_pie, IMG_ARC_ROUNDED);
@@ -70,6 +70,7 @@
       
       public function bar_graph()
       {
+         $this->set_title();
          $follow_bar = 0;
          $wide_bars = round($this->size_px / $this->n_elements);
          $max_barr_high=$this->size_px*.9;
@@ -77,7 +78,7 @@
          $unit_barr = ($max_barr_high/max($this->data));
          
          foreach ($this->data as $element => $elements) {
-            $color_pie = imagecolorallocate($this->image, random_int(50, 150), random_int(50, 150), random_int(50, 150));
+            $color_pie = imagecolorallocate($this->image, rand(50, 150), rand(50, 150), rand(50, 150));
             $star = $follow_bar;
             $end = round($follow_bar + $wide_bars);
             $high = $this->size_px-($elements * $unit_barr);

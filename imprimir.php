@@ -1,14 +1,27 @@
 <?php
+    
+    /*
+     * Example
+     * Basic graph pie & bar
+     *
+     */
    include_once 'GDgraph.php';
+   
+   /*
+    * create an array of key-value pairs
+    */
    $data = array(
-      'one' => 1,
-      'two' => 2,
-      'three' => 3,
-      'four' => 4,
+      'One' => 1,
+      'Two' => 2,
+      'Three' => 3,
+      'Four' => 4
      );
    
-  
-   $text = new GDGraph($data,300,'Title');
+  /*
+   * instantiate the object with the parameters:
+   * (data: array of pairs, width of the graph in pixels, title as string)
+   */
+   $graph = new GDGraph($data,300,'Title');
 
    ?>
 <!DOCTYPE html>
@@ -18,7 +31,8 @@
 </head>
 <body>
 <h1>Sample page</h1>
-<img src="<?php $text->bar_graph();?>" alt="graph"/>
-<img src="<?php $text->pie_graph();?>" alt="graph"/>
+<!-- Insert php code function in image src  -->
+<img src="<?php $graph->bar_graph();?>" alt="graph"/>
+<img src="<?php $graph->pie_graph();?>" alt="graph"/>
 </body>
 </html>
