@@ -21,7 +21,7 @@
    * instantiate the object with the parameters:
    * (data: array of pairs, width of the graph in pixels, title as string)
    */
-   $graph = new GDGraph($data,300,'Title');
+   $graph = new GDGraph($data,200,'Title');
 
    ?>
 <!DOCTYPE html>

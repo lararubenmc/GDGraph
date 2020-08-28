@@ -5,11 +5,9 @@
    {
       private $image;
       private $red, $green, $blue, $orange, $brown, $white, $black,  $almost_white;
-      private $data = array();
-      private $size_px;
-      private $title;
-      private $n_elements;
-      private $elements_percent;
+      private array $data, $elements_percent;
+      private int $size_px, $n_elements,$font_size;
+      private string $title;
       
       public function __construct($data, $size_px, $title)
       {
@@ -26,14 +24,15 @@
          $this->size_px = $size_px;
          $this->data = $data;
          $this->n_elements = count($data);
+         $this->font_size=round($this->size_px/50);
          $this->title = $title;
          $this->set_proportions();
          
       }
-      
-      private function set_title()
+            private function set_title()
       {
-         imagestring($this->image, 5, 1, 1, $this->title, $this->black);
+         
+         imagestring($this->image, $this->font_size, 1, 1, $this->title, $this->black);
       }
       
       private function set_proportions()
@@ -62,7 +61,7 @@
             imagefilledarc($this->image, $this->size_px * .5, $this->size_px * .5, $this->size_px * .9, $this->size_px * .9, $star, $end, $color_pie, IMG_ARC_ROUNDED);
             $follow_fill = $end;
             $label='('.round($elements*100).'%)-'.$element;
-            imagestring($this->image, 3, 1, $follow_fill_line, $label, $color_pie);
+            imagestring($this->image, $this->font_size, 1, $follow_fill_line, $label, $color_pie);
             $follow_fill_line = $follow_fill_line + (round($this->size_px * .5 / $this->n_elements));
          }
          $this->send_image();
@@ -85,7 +84,7 @@
             imagefilledrectangle($this->image, $star, $this->size_px, $end, $high, $color_pie);
             $follow_bar = $end;
             $label='('.$elements.')-'.$element;
-            imagestring($this->image, 3, 1, $follow_wide_lines, $label, $color_pie);
+            imagestring($this->image, $this->font_size, 1, $follow_wide_lines, $label, $color_pie);
             $follow_wide_lines = $follow_wide_lines + (round($this->size_px * .5 / $this->n_elements));
          }
          $this->send_image();
