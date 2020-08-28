@@ -1,7 +1,5 @@
 <?php
    include_once 'GDgraph.php';
-   
-  
    $data = array(
       'one' => 1,
       'two' => 2,
@@ -13,11 +11,14 @@
    $text = new GDGraph($data,300,'Title');
 
    ?>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sample page</title>
+</head>
 <body>
-<h1>GDGraph</h1>
+<h1>Sample page</h1>
 <img src="<?php $text->bar_graph();?>" alt="graph"/>
 <img src="<?php $text->pie_graph();?>" alt="graph"/>
-
 </body>
 </html>
