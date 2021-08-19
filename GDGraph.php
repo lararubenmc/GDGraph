@@ -11,6 +11,9 @@
       
       public function __construct($data, $size_px, $title)
       {
+
+
+         //Image color and size define
          $this->image = imagecreatetruecolor($size_px, $size_px + (round($size_px * .5)));
          $this->almost_white = imagecolorallocate($this->image, 230, 230, 230);
          imagefill($this->image, 0, 0, $this->almost_white);
@@ -22,13 +25,26 @@
          $this->brown = imagecolorallocate($this->image, 220, 110, 0);
          $this->black = imagecolorallocate($this->image, 0, 0, 0);
          $this->size_px = $size_px;
-         $this->data = $data;
-         $this->n_elements = count($data);
-         $this->font_size=round($this->size_px/50);
-         $this->title = $title;
-         $this->set_proportions();
+
+         //Array Size Control
+         if (!isset($data) or !is_array($data) or count($data)<2){
+            $data=array('o menor a 2 elementos' => 1);
+            $title="Array Vacio"; 
+            $this->data = $data;
+         }
+         elseif (count($data)>10) {
+            $title="Array mayor a"; 
+            $data=array('10 elementos' => 1);
+            $this->data = $data;
+         }
+         else{$this->data = $data;}
+            $this->n_elements = count($data);
+            $this->font_size=round($this->size_px/50);
+            $this->title = $title;
+            $this->set_proportions();
          
       }
+            
             private function set_title()
       {
          

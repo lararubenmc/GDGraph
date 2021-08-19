@@ -11,11 +11,17 @@
     * create an array of key-value pairs
     */
    $data = array(
-      'One' => 1,
+      'One' => 0,
       'Two' => 2,
-      'Three' => 3,
-      'Four' => 4
-     );
+      'Three' => 0,
+      'Four' => 5,
+      'five' => 6,
+      'seven' => 7,
+      'eigth' => 8,
+      'nine' => 9,
+      'css' => 4,
+      );
+
    
   /*
    * instantiate the object with the parameters:
