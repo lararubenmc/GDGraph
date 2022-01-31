@@ -14,7 +14,7 @@
 
 
          //Image color and size define
-         $this->image = imagecreatetruecolor($size_px, $size_px + (round($size_px * .5)));
+         $this->image = imagecreatetruecolor($size_px, $size_px + (round($size_px * .6)));
          $this->almost_white = imagecolorallocate($this->image, 230, 230, 230);
          imagefill($this->image, 0, 0, $this->almost_white);
          $this->white = imagecolorallocate($this->image, 255, 255, 255);
@@ -39,7 +39,7 @@
          }
          else{$this->data = $data;}
             $this->n_elements = count($data);
-            $this->font_size=round($this->size_px/50);
+            $this->font_size=round($this->size_px/30);
             $this->title = $title;
             $this->set_proportions();
          
@@ -74,7 +74,7 @@
             $color_pie = imagecolorallocate($this->image, rand(50, 150), rand(50, 150), rand(50, 150));
             $star = $follow_fill;
             $end = round($follow_fill + (360.00 * $elements));
-            imagefilledarc($this->image, $this->size_px * .5, $this->size_px * .5, $this->size_px * .9, $this->size_px * .9, $star, $end, $color_pie, IMG_ARC_ROUNDED);
+            imagefilledarc($this->image, $this->size_px * .5, $this->size_px * .5, $this->size_px * .8, $this->size_px * .8, $star, $end, $color_pie, IMG_ARC_ROUNDED);
             $follow_fill = $end;
             $label='('.round($elements*100).'%)-'.$element;
             imagestring($this->image, $this->font_size, 1, $follow_fill_line, $label, $color_pie);
